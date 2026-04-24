@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Mon portfolio</title>
+</head>
+
+<body>
+  <div class="layout">
+    <!-- ===================== SIDEBAR ===================== -->
+
+
+
+
+    <aside class="sidebar" aria-label="Menu latéral">
+
+
+
+      <nav>
+        <div class="nav-title"></div>
+        <ul>
+          <li class="projet"><a href="projets.php">Projets</a></li>
+          <br> </br>
+          <br> </br>
+          <li class="contact"><a href="contact.html">Contact</a></li>
+          <br> </br>
+          <br> </br>
+          <li><a class="cv" href="cv-emmaguilbaud.pdf" download="cv-emmaguilbaud.pdf">Mon CV</a></li>
+        </ul>
+        <br> </br>
+      </nav>
+
+    </aside>
+
+
+
+    <main>
+      <section class="presentation">
+        <div class="photo"></div>
+        <h1 class="titre">Emma Guilbaud
+          <br>
+          < - - - - - </br>
+            <span class="menu-typo">Designer graphique</span>
+        </h1>
+
+        <p class="infos">
+          Je m'appelle Emma.
+          Je suis passionnée de design graphique, musique et de création
+          visuelle. Découvrez mon univers à travers mes projets !
+          <br>Bonne visite !</br>
+        </p>
+
+        <div class="vinyl-container">
+          <a class="vinyl-link" href="https://pin.it/6rVgfZdIo" aria-label="Voir mon compte Pinterest">
+            <div class="vinyl">
+              <div class="plate">
+                <img src="textures/vinyle.png" alt="Vinyl décoratif" class="vinyl-img">
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+
+      <div class="marquee" role="region" aria-label="Actualités défilantes">
+        <div class="marquee__track">
+          <div class="marquee__group">
+            <span class="marquee__item">Mixed media</span>
+            <span class="marquee__item">UX / UI design</span>
+            <span class="marquee__item">Photographie</span>
+            <span class="marquee__item">Montage</span>
+            <span class="marquee__item">Création</span>
+            <span class="marquee__item">Musique</span>
+          </div>
+          <div class="marquee__group" aria-hidden="true">
+            <span class="marquee__item">Mixed media</span>
+            <span class="marquee__item">UX / UI design</span>
+            <span class="marquee__item">Photographie</span>
+            <span class="marquee__item">Montage</span>
+            <span class="marquee__item">Création</span>
+            <span class="marquee__item">Musique</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nouveau carousel des technologies (sens inverse) -->
+      <div class="marquee marquee--tech" role="region" aria-label="Technologies maîtrisées">
+        <div class="marquee__track marquee__track--reverse">
+          <div class="marquee__group">
+            <span class="marquee__item marquee__item--tech">HTML</span>
+            <span class="marquee__item marquee__item--tech">CSS</span>
+            <span class="marquee__item marquee__item--tech">PHP</span>
+            <span class="marquee__item marquee__item--tech">JAVASCRIPT</span>
+            <span class="marquee__item marquee__item--tech">SQL</span>
+          </div>
+          <div class="marquee__group">
+            <span class="marquee__item marquee__item--tech">HTML</span>
+            <span class="marquee__item marquee__item--tech">CSS</span>
+            <span class="marquee__item marquee__item--tech">PHP</span>
+            <span class="marquee__item marquee__item--tech">JAVASCRIPT</span>
+            <span class="marquee__item marquee__item--tech">SQL</span>
+          </div>
+          <div class="marquee__group">
+            <span class="marquee__item marquee__item--tech">HTML</span>
+            <span class="marquee__item marquee__item--tech">CSS</span>
+            <span class="marquee__item marquee__item--tech">PHP</span>
+            <span class="marquee__item marquee__item--tech">JAVASCRIPT</span>
+            <span class="marquee__item marquee__item--tech">SQL</span>
+          </div>
+          <div class="marquee__group" aria-hidden="true">
+            <span class="marquee__item marquee__item--tech">HTML</span>
+            <span class="marquee__item marquee__item--tech">CSS</span>
+            <span class="marquee__item marquee__item--tech">PHP</span>
+            <span class="marquee__item marquee__item--tech">JAVASCRIPT</span>
+            <span class="marquee__item marquee__item--tech">SQL</span>
+          </div>
+        </div>
+      </div>
+
+
+      <h1 class="menu-typo">Je suis à l'aise et j'aime travailler avec ces logiciels de la suite Adobe</h1>
+      <section class="section" id="competences" aria-label="Mes compétences">
+        <div class="main-grid">
+          <article class="card" tabindex="0">
+            <span class="tape"></span>
+            <div class="title">Photoshop</div>
+            <div class="small">photomontage, retouches, double expo</div>
+            <img src="adobelogo/photoshop.png" alt="Photoshop" style="height:auto; width: 55%;">
+          </article>
+          <article class="card" tabindex="0">
+            <span class="tape"></span>
+            <div class="title">Illustrator</div>
+            <div class="small">Logos, typos, identité visuelle</div>
+            <img src="adobelogo/illustrator.png" alt="Illustrator" style="height:auto; width: 55%;">
+          </article>
+          <article class="card" tabindex="0">
+            <span class="tape"></span>
+            <div class="title">InDesign</div>
+            <div class="small">brochures, flyers, magazines</div>
+            <img src="adobelogo/indesign.png" alt="InDesign" style="height:auto; width: 55%;">
+          </article>
+          <article class="card" tabindex="0">
+            <span class="tape"></span>
+            <div class="title">Premiere Pro</div>
+            <div class="small">montage vidéo</div>
+            <img src="adobelogo/premierepro.png" alt="Premiere Pro" style="height:auto; width: 55%;">
+          </article>
+          <article class="card" tabindex="0">
+            <span class="tape"></span>
+            <div class="title">Lightroom</div>
+            <div class="small">retouche photo, color grading</div>
+            <img src="adobelogo/lightroom.png" alt="Lightroom" style="height:auto; width: 55%;">
+          </article>
+        </div>
+        <br> </br>
+      </section>
+    </main>
+
+    <div class="infos">
+
+      <br> </br>
+      <div class="reseaux-textures">
+        <a href="https://www.linkedin.com/in/emma-g-4809b5354" target="_blank" rel="noopener noreferrer">
+          <img src="textures/linkedin-texture.png" alt="LinkedIn-Emma-Guilbaud" class="icone-reseaux">
+        </a>
+
+        <a href="https://www.instagram.com/emma_g_designpro?igsh=MWFjdXRpOXBhaWFuNw%3D%3D&utm_source=qr" target="_blank"
+          rel="noopener noreferrer">
+          <img src="textures/instagram-texture.png" alt="Instagram-Emma-Guilbaud" class="icone-reseaux">
+        </a>
+
+        <a href="https://www.facebook.com/share/1G7EeqjEGr/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+          <img src="textures/facebook-texture.png" alt="Facebook-Emma-Guilbaud" class="icone-reseaux">
+        </a>
+      </div>
+    </div>
+
+    <h1>Découvre mes réalisations graphiques et web dans la page Projets !</h1>
+
+    <p class="footer">&copy; 2026 Portfolio Emma Guilbaud – Tous droits réservés.</p>
+
+</body>
+
+</html>

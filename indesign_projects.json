@@ -1,0 +1,44 @@
+[
+  {
+    "filename": "article-scénart.pdf",
+    "title": "Article Scénart",
+    "desc": "Livret d'article scénographique, mise en page créative et typographie expressive.",
+    "tags": ["InDesign"],
+    "pages": 4
+  },
+  {
+    "filename": "hanabira-hotel.pdf",
+    "title": "Hanabira Hotel",
+    "desc": "Projet de branding hôtelier, design élégant et direction artistique raffinée.",
+    "tags": ["InDesign"],
+    "pages": 6
+  },
+  {
+    "filename": "laufey-livret.pdf",
+    "title": "Livret Laufey",
+    "desc": "Livret musical illustré, harmonie visuelle et composition moderne.",
+    "tags": ["InDesign"],
+    "pages": 5
+  },
+  {
+    "filename": "pamphlet-cegep.pdf",
+    "title": "Pamphlet Cégep",
+    "desc": "Pamphlet institutionnel, structure claire et DA professionnelle.",
+    "tags": ["InDesign"],
+    "pages": 3
+  },
+  {
+    "filename": "ski-resort.pdf",
+    "title": "Ski Resort",
+    "desc": "Livret touristique, ambiance hivernale et design immersif.",
+    "tags": ["InDesign"],
+    "pages": 4
+  },
+  {
+    "filename": "typographie-japonaise.pdf",
+    "title": "Typographie Japonaise",
+    "desc": "Étude typographique, inspiration japonaise et DA minimaliste.",
+    "tags": ["InDesign"],
+    "pages": 2
+  }
+]

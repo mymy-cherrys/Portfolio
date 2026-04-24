@@ -1,0 +1,1653 @@
+/* BOUTON FERMER LIGHTBOX (desktop) */
+/* BOUTON FERMER LIGHTBOX (desktop, dynamique et grand) */
+/* Bouton fermer dans le coin du carré blanc, grand et dynamique */
+/* Bouton fermer ENCORE PLUS GRAND, bien à droite */
+.close-lightbox-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 180px;
+  height: 180px;
+  background: #fff;
+  color: #23272b;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 150px;
+  font-weight: 900;
+  border-radius: 50%;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.22);
+  border: 7px solid #e0e0e0;
+  transition: background 0.22s, color 0.22s, box-shadow 0.22s, transform 0.22s cubic-bezier(.2,.9,.2,1);
+  will-change: transform;
+  outline: none;
+  border-style: solid;
+}
+.close-lightbox-btn:hover, .close-lightbox-btn:focus {
+  background: #f7f7f7;
+  color: #7A9BB8;
+  box-shadow: 0 14px 40px rgba(122,155,184,0.22);
+  transform: scale(1.22) rotate(-12deg);
+}
+@media (max-width: 900px) {
+  .close-lightbox-btn {
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    font-size: 26px;
+  }
+}
+.lightbox-panel {
+  position: relative;
+}
+/* Carousels passent derrière la sidebar sur desktop */
+@media (min-width: 1000px) {
+  .sidebar {
+    position: relative;
+    z-index: 10;
+  }
+  .marquee, .marquee--tech {
+    position: relative;
+    z-index: 5;
+  }
+  .sidebar::before {
+    z-index: 11;
+  }
+  /* Les carousels passent sous la sidebar */
+  .sidebar {
+    pointer-events: auto;
+  }
+  .marquee, .marquee--tech {
+    pointer-events: auto;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Police Aloha Brush (locale) */
+@font-face {
+  font-family: 'Aloha Brush';
+  src: url('fonts/aloha-brush-font/AlohaBrushDemoVersionRegular-d97Ag.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aloha Brush';
+  src: url('fonts/aloha-brush-font/AlohaBrushDemoVersionItalic-mL0Wj.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Police Give You Glory (locale) */
+@font-face {
+  font-family: 'Give You Glory';
+  src: url('fonts/Give_You_Glory/GiveYouGlory-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Police Fredericka the Great (locale) */
+@font-face {
+  font-family: 'Fredericka the Great';
+  src: url('fonts/Fredericka_the_Great/FrederickatheGreat-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Police Portmanteau (locale) */
+@font-face {
+  font-family: 'Portmanteau';
+  src: url('fonts/portmanteau/Portmanteau-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Police Trajan Pro (locale) */
+@font-face {
+  font-family: 'Trajan Pro';
+  src: url('fonts/trajan-pro/TrajanPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Trajan Pro';
+  src: url('fonts/trajan-pro/TrajanPro-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Appliquer Portmanteau aux titres h1 */
+h1 {
+  font-family: 'Portmanteau', cursive, ui-rounded, system-ui, -apple-system;
+  font-weight: 540;
+  font-size: 400%;
+  margin-left: 0;
+  padding: 60px;
+
+}
+
+/* Appliquer la même typo que le menu aux mots 'Designer graphique' */
+.menu-typo {
+  font-family: 'Fredericka the Great', cursive, ui-rounded, system-ui, -apple-system;
+  font-weight: 400;
+}
+
+/* Décaler 'Designer graphique' plus à droite dans le titre uniquement */
+.titre .menu-typo {
+  display: inline-block;
+  margin-top: 60px;
+  margin-left: 12rem;
+}
+
+/* (supprimé) .role-line n'est plus utilisé */
+
+.titre {
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sidebar {
+
+  overflow: hidden;
+}
+
+
+
+/* =========================================
+   PALETTE & BASE
+========================================= */
+:root {
+  --graphite: #2a2a2a;
+  --paper-shadow: rgba(0, 0, 0, 0.18);
+
+  /* Palette Adobe harmonieuse terre et naturel */
+  --adobe-blue: #7A9BB8;
+  --adobe-orange: #C8956B;
+  --adobe-pink: #B8857A;
+  --adobe-purple: #9B7B9A;
+
+
+  /* Sidebar (post-it) */
+  --aside-bg: #fff9d6;
+  --aside-border: #e8dfb5;
+  --tape: #b2aa8f;
+
+  --sidebar-w: 260px;
+  --gap: 24px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  cursor: url(curseur-perso.png) 8 8, auto;
+
+}
+
+main {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: var(--gap);
+}
+
+body {
+  background: url(textures/collagebackground.jpg) no-repeat center top fixed;
+  background-size: cover;
+  min-height: 100vh;
+  /* fond blanc, pas de texture */
+  color: var(--graphite);
+  font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.4;
+}
+
+/* Scroll propre + pas d’horizontal */
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+main,
+.sidebar {
+  overscroll-behavior: contain;
+}
+
+/* =========================================
+   LAYOUT GLOBAL
+========================================= */
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  min-height: 100svh;
+  /* plus fiable que 100vh sur mobile */
+}
+
+/* =========================================
+   SIDEBAR POST-IT (sans tilt qui casse sticky)
+========================================= */
+.sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100svh;
+  max-height: 100svh;
+  /* évite les sauts iOS */
+  overflow: auto;
+  background: url(textures/aside.png) no-repeat center/cover;
+
+
+
+
+  padding: 26px 18px 24px;
+
+  /* IMPORTANT: pas de transform ici -> sticky & scroll stables */
+}
+
+/* Washi tape qui ne bloque rien */
+.sidebar::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 110px;
+  height: 26px;
+  z-index: 1;
+  background: repeating-linear-gradient(90deg, #0001 0 2px, #0000 2px 6px),
+}
+
+
+.sidebar-tilt {
+  transform: rotate(-0.6deg);
+  transform-origin: top left;
+}
+
+
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-size: 20px;
+  margin: 6px;
+}
+
+.tagline {
+  font-size: 13px;
+  opacity: 0.75;
+  margin-bottom: 18px;
+}
+
+nav .nav-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.55;
+  margin: 18px 0 10px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+nav li+li {
+  margin-top: 8px;
+}
+
+/* Liens = post-its carrés plus grands avec effet papier déchiré */
+nav a {
+  --post-size: 132px;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: var(--post-size);
+  height: var(--post-size);
+  z-index: 6;
+  padding: 12px;
+  margin-top: 8px;
+  /* Espace pour les épingles */
+  background:
+    radial-gradient(140px 70px at 16% 14%, rgba(169, 188, 225, 0.178) 0, transparent 72%),
+    var(--note-yellow);
+  transition: transform 0.22s cubic-bezier(.2, .9, .2, 1), box-shadow 0.18s ease;
+  overflow: visible;
+  text-align: center;
+  font-weight: 700;
+  /* Bords déchirés réalistes */
+  clip-path: polygon(0% 4%, 3% 0%, 28% 2%, 45% 1%, 67% 0%, 89% 2%, 100% 3%,
+      97% 26%, 99% 42%, 98% 65%, 100% 88%, 98% 100%,
+      82% 98%, 61% 100%, 42% 99%, 21% 100%, 2% 98%,
+      1% 83%, 0% 65%, 2% 44%, 1% 23%);
+}
+
+/* Fond des liens du menu aside avec aspect grunge */
+aside.sidebar nav li a {
+  background: #231717;
+  color: #F5DEB3;
+  font-family: 'Trajan Pro', serif, system-ui, -apple-system;
+  font-weight: 400;
+  font-size: clamp(13px, 2vw, 20px);
+  line-height: 1.12;
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  border: 4px solid #a09c9c;
+}
+
+/* Masking tape pour les cards du menu */
+nav a::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-8deg);
+  width: 60px;
+  height: 18px;
+  z-index: 11;
+  background: repeating-linear-gradient(90deg, #0001 0 2px, #0000 2px 6px),
+    linear-gradient(#ffffffcc, #ffffff66), var(--tape);
+  border-radius: 2px;
+  box-shadow: 0 4px 8px -6px var(--paper-shadow), 0 0 0 1px #0001 inset;
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
+  pointer-events: none;
+}
+
+/* Légères rotations par item pour naturel */
+/* Variations subtiles par item : rotation et léger offset pour un rendu "fait main" */
+nav a {
+  /* variables de base (peuvent être surchargées par nth-child) */
+  --base-rot: 0deg;
+  --base-trans-x: 0px;
+  --base-trans-y: 0px;
+  transform: translate(var(--base-trans-x), var(--base-trans-y)) rotate(var(--base-rot));
+}
+
+/* Position de départ spécifique par item (ciblage par classe pour robustesse) */
+nav li.projet a {
+  --base-rot: 0deg;
+  --base-trans-x: 0px;
+}
+
+nav li.contact a {
+  --base-rot: 2deg;
+  --base-trans-x: 6px;
+  --base-trans-y: 0px;
+}
+
+nav a.cv {
+  --base-rot: 4deg;
+  --base-trans-x: 10px;
+  --base-trans-y: 0px;
+}
+
+/* Variations de rotation du masking tape par item pour un effet naturel */
+nav li.projet a::before {
+  transform: translateX(-50%) rotate(-5deg);
+}
+
+nav li.contact a::before {
+  transform: translateX(-50%) rotate(-12deg);
+}
+
+nav a.cv::before {
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+/* Hover : légèrement soulevé, avec effet grunge renforcé */
+aside.sidebar nav a:hover {
+  transform: translate(calc(var(--base-trans-x) + 10px), calc(var(--base-trans-y) - 8px)) rotate(var(--base-rot));
+  filter: saturate(1.2) contrast(1.15) brightness(1.3);
+  background: #0A0801;
+  color: white;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* S'assurer que tous les items du menu aside (li et a) ont les mêmes transitions/hover
+   même si certaines entrées ont des classes différentes */
+aside.sidebar nav ul li,
+aside.sidebar nav ul li a {
+  transition: transform 0.22s cubic-bezier(.2, .9, .2, 1), box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+aside.sidebar nav ul li:hover,
+aside.sidebar nav ul li a:hover {
+  transform: translateY(-8px) translateX(10px) rotate(0deg);
+  filter: saturate(1.04) contrast(1.02) brightness(1.02);
+}
+
+nav a:hover::before {
+  transform: translateX(-50%) rotate(-5deg);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Focus accessible */
+nav a:focus {
+  outline: 3px solid rgba(34, 132, 255, 0.18);
+  outline-offset: 6px;
+}
+
+/* Responsive : réduire la taille des carrés sur petits écrans */
+@media (max-width: 920px) {
+  nav a {
+    --post-size: 100px;
+    width: var(--post-size);
+    height: var(--post-size);
+  }
+
+  nav a::before {
+    width: 48px;
+    height: 16px;
+    top: -7px;
+  }
+}
+
+@media (max-width: 520px) {
+  nav a {
+    --post-size: 84px;
+    width: var(--post-size);
+    height: var(--post-size);
+    font-size: 14px;
+  }
+
+  nav a::before {
+    width: 42px;
+    height: 14px;
+    top: -7px;
+  }
+}
+
+
+
+header.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  gap: 12px;
+}
+
+/* =========================================
+   HEADER + BOUTONS
+========================================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hdr-cta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+}
+
+
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #0001;
+  background: radial-gradient(120px 60px at 12% 10%, #fff7 0, #0000 70%),
+    #fffdfa;
+  box-shadow: 0 10px 16px -12px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #fff4eb;
+}
+
+/* =========================================
+   HERO (photo + bio)
+========================================= */
+.hero {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: #fafafa;
+  border: 1px solid #eee;
+  box-shadow: 0 14px 18px -14px rgba(0, 0, 0, 0.22);
+}
+
+.bio h1 {
+  font-size: 26px;
+  margin: 0 0 6px;
+}
+
+.bio p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.bio .kpis {
+  margin-top: 10px;
+  display: flex;
+  gap: 14px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* =========================================
+   PANELS (contenu)
+========================================= */
+.section {
+  display: grid;
+  gap: 12px;
+}
+
+/* Centrage spécifique pour la section compétences */
+#competences {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.55;
+  margin: 0;
+}
+
+.panel {
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 8px;
+  background: #fff;
+  box-shadow: 0 10px 16px -14px rgba(0, 0, 0, 0.18);
+}
+
+.panel h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+
+.main-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 60px 70px;
+  align-items: flex-start;
+  justify-content: center;
+  /* Centrage des éléments */
+  width: auto;
+  max-width: 1100px;
+  /* Largeur maximale pour un meilleur centrage */
+  padding: 8px 20px;
+  margin-top: 40px;
+  position: relative;
+  perspective: 1200px;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+
+
+
+.card {
+  --angle: -2deg;
+  --note: var(--note-yellow);
+  position: relative;
+  width: 150px;
+  /* Augmenté de 123px à 150px */
+  height: 150px;
+  /* Augmenté de 123px à 150px */
+  display: flex;
+  flex-direction: column;
+  padding: 20px 18px 26px;
+  /* Augmenté le padding proportionnellement */
+  gap: 10px;
+  /* Augmenté l'espacement */
+  background: radial-gradient(120px 60px at 10% 6%, #fff8 0, #0000 70%),
+    repeating-linear-gradient(0deg, #0000 0 22px, #0001 22px 23px), var(--note);
+  border-radius: 6px 10px 14px 12px;
+  box-shadow: 0 18px 18px -12px var(--paper-shadow), 0 2px 0 0 #0000000f inset,
+    0 0 0 1px #00000010;
+  transform: rotate(var(--angle)) scale(1);
+  /* Toujours à taille normale, plus de scale(0.8) */
+  opacity: 1;
+  /* Toujours visible */
+  transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease;
+}
+
+/* Couleurs spécifiques Adobe harmonieuses */
+.card:nth-child(1) {
+  /* Photoshop */
+  transition-delay: 0.05s;
+  --note: var(--adobe-blue);
+  --angle: -2.5deg;
+}
+
+.card:nth-child(2) {
+  /* Illustrator */
+  transition-delay: 0.1s;
+  --note: var(--adobe-orange);
+  --angle: 1deg;
+}
+
+.card:nth-child(3) {
+  /* InDesign */
+  transition-delay: 0.15s;
+  --note: var(--adobe-pink);
+  --angle: 3deg;
+}
+
+.card:nth-child(4) {
+  /* Premiere Pro */
+  transition-delay: 0.2s;
+  --note: var(--adobe-purple);
+  --angle: -1deg;
+}
+
+.card:nth-child(5) {
+  /* After Effects */
+  transition-delay: 0.25s;
+  --note: var(--adobe-purple);
+  --angle: 2deg;
+}
+
+.card:nth-child(6) {
+  /* Lightroom */
+  transition-delay: 0.3s;
+  --note: var(--adobe-blue);
+  --angle: -3deg;
+}
+
+.card:nth-child(7) {
+  transition-delay: 0.35s;
+  --note: var(--note-pink);
+  --angle: 0.5deg;
+}
+
+.card:nth-child(8) {
+  transition-delay: 0.4s;
+  --note: var(--note-green);
+  --angle: -2deg;
+}
+
+.card:nth-child(9) {
+  transition-delay: 0.45s;
+  --note: var(--note-yellow);
+  --angle: 2.5deg;
+}
+
+.card:hover {
+  transform: rotate(calc(var(--angle) + 2deg)) translateY(-8px) scale(1.05);
+  /* Légèrement plus d'effet */
+  box-shadow: 0 35px 40px -22px var(--paper-shadow), 0 0 0 1px #00000026;
+  filter: saturate(1.1) contrast(1.05) brightness(1.05);
+  /* Effet plus marqué */
+  z-index: 10;
+  /* Pour passer au-dessus des autres cartes */
+}
+
+/* Style pour les images dans les cartes de compétences */
+.card img {
+  margin-top: auto;
+  /* Pousse l'image vers le bas */
+  align-self: center;
+  /* Centre l'image horizontalement */
+  max-width: 45%;
+  /* Légèrement plus grand que 40% */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+  /* Léger agrandissement de l'image au hover */
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg,
+      #0000 0 49%,
+      #0002 50% 60%,
+      #fff6 61% 100%);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  filter: blur(0.1px);
+}
+
+.tape {
+  position: absolute;
+  inset: auto auto calc(100% - 8px) 10px;
+  height: 24px;
+  width: 72px;
+  z-index: 2;
+  transform: rotate(-4deg);
+}
+
+.tape::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, #0001 0 2px, #0000 2px 6px),
+    linear-gradient(#ffffffcc, #ffffff66), var(--tape);
+  border-radius: 4px;
+  box-shadow: 0 8px 16px -10px var(--paper-shadow), 0 0 0 1px #0001 inset;
+  clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
+}
+
+.title {
+  font-family: 'Portmanteau', serif, system-ui, -apple-system;
+  font-weight: 700;
+  font-size: 15px;
+  /* Réduit de 17px à 15px */
+  line-height: 1.2;
+  /* Amélioré pour plus de lisibilité */
+  letter-spacing: 0.2px;
+  margin: 6px 0 8px;
+  /* Augmenté les marges */
+  color: #333;
+  /* Couleur plus contrastée */
+}
+
+.small {
+  font-size: 16px;
+  /* Augmenté de 14px à 16px */
+  opacity: 1;
+  /* Opacité complète pour le blanc */
+  line-height: 1.3;
+  /* Meilleure lisibilité */
+  color: white;
+  /* Texte blanc */
+}
+
+/* Décalage spécifique pour le titre Illustrator */
+.main-grid .card:nth-child(2) .title {
+  margin-left: -10px;
+}
+
+.vinyl-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  perspective: 1000px;
+  max-width: 320px;
+}
+
+.vinyl {
+  width: 320px;
+  height: 320px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.vinyl:hover {
+  transform: rotate3d(1, 1, 0, 15deg);
+}
+
+.plate {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.vinyl-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+  animation: vinylSpin 8s linear infinite;
+  /* Rotation lente et continue */
+}
+
+@keyframes vinylSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sticker {
+  display: inline-grid;
+  place-items: center;
+  font: 600 11px/1 ui-sans-serif, system-ui;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px dashed #0003;
+  box-shadow: 0 3px 0 #00000012;
+  transform: rotate(-8deg);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover .sticker {
+  transform: rotate(0deg) translateY(-2px) scale(1.06);
+  box-shadow: 0 5px 0 #0000001a;
+}
+
+/* =========================================
+   CHECKBOX (Uiverse – inchangé)
+========================================= */
+/* From Uiverse.io by PriyanshuGupta28 */
+.checkbox-wrapper input[type="checkbox"] {
+  visibility: hidden;
+  display: none;
+}
+
+.checkbox-wrapper *,
+.checkbox-wrapper ::after,
+.checkbox-wrapper ::before {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.checkbox-wrapper {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.checkbox-wrapper .label {
+  cursor: pointer;
+}
+
+.checkbox-wrapper .check {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox-wrapper .label svg {
+  vertical-align: middle;
+}
+
+.checkbox-wrapper .path1 {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: 0.5s stroke-dashoffset;
+  opacity: 0;
+}
+
+.checkbox-wrapper .check:checked+label svg g path {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+/* =========================================
+   BARRE DE RECHERCHE (safe & focus)
+========================================= */
+.search {
+  position: relative;
+  margin: 10px 0 16px;
+}
+
+.search input[type="search"] {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0 6px 12px -10px rgba(0, 0, 0, 0.22);
+  font: 500 14px/1.2 ui-sans-serif, system-ui, -apple-system;
+  color: #2a2a2a;
+  outline: none;
+}
+
+.search input[type="search"]:focus {
+  border-color: #c7c7c7;
+  box-shadow: 0 10px 16px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px #00000010 inset;
+}
+
+.search .icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  /* l’icône ne bloque pas le clic */
+  opacity: 0.6;
+}
+
+/* =========================================
+   SCROLLBARS (optionnel, propres)
+========================================= */
+:root {
+  scrollbar-color: #d9d9d9 #ffffff;
+  scrollbar-width: thin;
+}
+
+/* Firefox */
+.sidebar::-webkit-scrollbar,
+main::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+main::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+main::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 20px;
+  border: 2px solid #fff;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+main::-webkit-scrollbar-thumb:hover {
+  background: #c7c7c7;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 920px) {
+  body {
+    background: url(textures/collagebackground.jpg) no-repeat center top fixed;
+    background-size: cover;
+    min-height: 100vh;
+    padding-top: 160px; /* Espace pour le menu fixe */
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    padding-top: 0;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 150px;
+    max-height: none;
+    overflow: visible;
+    margin: 0;
+    padding: 12px 16px 20px;
+    border-right: none;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    transform: rotate(0deg);
+  }
+  
+  .sidebar::before {
+    display: none;
+  }
+
+  .sidebar nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sidebar nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sidebar nav li {
+    margin: 0;
+  }
+
+  .sidebar nav li br {
+    display: none;
+  }
+  
+  /* Réorganisation de la présentation */
+  .presentation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 20px;
+    gap: 15px;
+  }
+  
+  .photo {
+    width: 450px;
+    height: 450px;
+    float: none;
+    margin: 0 auto 15px auto;
+    display: block;
+    order: 1;
+  }
+  
+  .titre {
+    font-size: clamp(2.2rem, 5vw, 3rem) !important;
+    text-align: center !important;
+    margin: 0 auto 5px auto !important;
+    line-height: 1.2;
+    width: 100%;
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .titre br {
+    display: none !important;
+  }
+  
+  /* Cache tout le contenu texte du titre sauf les spans */
+  .titre {
+    font-size: 0 !important;
+  }
+  
+  /* Affiche uniquement les textes dans des éléments inline */
+  .titre::before {
+    content: "Emma Guilbaud";
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    display: block;
+  }
+  
+  .menu-typo {
+    display: block;
+    font-size: clamp(2.2rem, 5vw, 3rem) !important;
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  .presentation p.infos {
+    font-size: clamp(22px, 3.5vw, 28px) !important;
+    text-align: center;
+    clear: both;
+    margin-top: 10px;
+    grid-area: unset;
+    order: 3;
+  }
+  
+  .presentation .vinyl-container {
+    position: fixed;
+    right: 10px;
+    top: 180px;
+    grid-area: unset;
+    margin: 0;
+    z-index: 100;
+  }
+  
+  .vinyl-container .vinyl {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  .vinyl-img {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  /* Texte "Je maîtrise ces logiciels" */
+  h1.menu-typo {
+    font-size: clamp(18px, 3vw, 24px) !important;
+    text-align: center;
+    padding: 0 15px;
+    margin: 30px 0 20px 0;
+  }
+  
+  /* Cards Adobe plus petites */
+  .main-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 0 15px;
+  }
+  
+  .card {
+    transform: scale(0.85);
+  }
+  
+  /* Texte final h1 - centré pour mobile */
+  main > h1:last-of-type {
+    text-align: center;
+    font-size: clamp(18px, 3vw, 24px) !important;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 90%;
+  }
+
+  .hero {
+    grid-template-columns: 100px 1fr;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  /* Alignement progressif vers la gauche pour les écrans en dessous de 700px */
+  
+  /* Enlever justify-content center pour footer */
+  .footer {
+    justify-content: flex-start;
+  }
+  
+  /* Enlever align-items center et flex-direction column de #competences */
+  #competences {
+    align-items: flex-start;
+    flex-direction: row;
+  }
+  
+  .presentation {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .photo {
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  .titre {
+    text-align: left;
+    margin-left: 0;
+  }
+  
+  .titre::before {
+    text-align: left;
+  }
+  
+  .menu-typo {
+    text-align: left;
+    margin-left: 0;
+  }
+  
+  .presentation p.infos {
+    text-align: left;
+    margin-left: 0;
+    order: 2;
+    margin-top: 20px;
+  }
+  
+  .presentation .vinyl-container {
+    position: static;
+    margin-left: 0;
+    justify-self: flex-start;
+  }
+  
+  h1.menu-typo {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 15px;
+  }
+  
+  .main-grid {
+    margin-left: 0;
+    padding-left: 15px;
+    justify-content: flex-start;
+  }
+  
+  main > h1:last-of-type {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 15px;
+  }
+}
+
+@media (max-width: 520px) {
+  body {
+    background: url(textures/collagebackground.jpg) no-repeat center top fixed;
+    background-size: cover;
+    min-height: 100vh;
+  }
+
+  .main-grid {
+    flex-direction: row;
+  }
+}
+
+/* iPhone 14 Pro et petits écrans */
+@media (max-width: 430px) {
+  .titre {
+    font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+  }
+  
+  .titre::before {
+    font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+  }
+  
+  .menu-typo {
+    font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+  }
+  
+  .presentation p.infos {
+    font-size: clamp(18px, 3.5vw, 24px) !important;
+    padding: 0 15px;
+  }
+  
+  h1.menu-typo {
+    font-size: clamp(16px, 3vw, 20px) !important;
+    padding: 0 10px;
+    margin: 20px 0 15px 0;
+  }
+  
+  main > h1:last-of-type {
+    font-size: clamp(16px, 3vw, 20px) !important;
+    padding: 10px;
+    margin: 15px auto;
+  }
+  
+  .photo {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    margin: 0 auto 10px auto;
+  }
+  
+  .presentation {
+    padding: 0 15px;
+    gap: 10px;
+  }
+  
+  .vinyl-container .vinyl {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  .vinyl-img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  .presentation .vinyl-container {
+    right: 5px;
+    top: 150px;
+  }
+}
+
+
+
+
+
+.vinyl-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.vinyl-link:hover {
+  transform: none;
+  /* pas de décalage au survol */
+}
+
+.plate {
+  width: fit-content;
+}
+
+.plate .black,
+.plate .white,
+.plate .center,
+.plate .border {
+  border-radius: 100%;
+}
+
+.vinyl,
+.plate .black,
+.plate .white,
+.plate .border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plate .black {
+  width: 150px;
+  height: 150px;
+  background-color: #675D50;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.plate .white {
+  width: 70px;
+  height: 70px;
+  background-color: #F3DEBA;
+}
+
+.plate .center {
+  width: 20px;
+  height: 20px;
+  background-color: #675D50;
+}
+
+.plate .border {
+  width: 111px;
+  height: 111px;
+  border-top: 3px solid #F3DEBA;
+  border-bottom: 3px solid #F3DEBA;
+  border-left: 3px solid #675D50;
+  border-right: 3px solid #675D50;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: fit-content;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  rotate: -45deg;
+}
+
+.player .circ {
+  width: 25px;
+  height: 25px;
+  background-color: #F3DEBA;
+  border-radius: 100%;
+  z-index: 1;
+}
+
+.player .rect {
+  width: 10px;
+  height: 55px;
+  background-color: #F3DEBA;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 5px;
+}
+
+
+.photo {
+  background: url('textures/emma.png') no-repeat center/cover;
+  width: 600px;
+  height: 600px;
+  grid-area: 1 / 1 / 2 / 2;
+  border: none;
+  outline: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px 0;
+  text-align: center;
+  grid-column: 1 / -1;
+  /* Prend toute la largeur du grid layout */
+}
+
+.footer p {
+  font-size: 16px;
+  opacity: 0.8;
+  margin: 0;
+  color: #333;
+  font-weight: 500;
+}
+
+.section-icon {
+  width: 650px;
+  height: auto;
+  margin-top: 30px;
+}
+
+.presentation {
+  display: grid;
+
+}
+
+
+.presentation .vinyl-container {
+  grid-area: 2 / 2 / 3 / 3;
+  /* même ligne que le paragraphe, sous le H1 */
+  justify-self: start;
+  align-self: start;
+  margin: 0.5rem 0 0 0;
+}
+
+/* Paragraphe d'intro sous la photo, en "Give You Glory" */
+.presentation p.infos {
+  font-family: 'Give You Glory', cursive, ui-rounded, system-ui, -apple-system;
+  font-weight: 600;
+  font-size: clamp(23px, 3.2vw, 35px);
+  line-height: 1.5;
+  grid-area: 2 / 1 / 3 / 2;
+  margin-top: 8px;
+  padding: 8px 12px;
+}
+
+.infos {
+  max-width: 700px;
+  margin: 80px;
+}
+
+.reseaux-textures {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 25px;
+  margin: 20px 20px 0 0;
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+}
+
+.reseaux-textures img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.reseaux-textures img:hover {
+  transform: scale(1.2);
+}
+
+.marquee {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-1 * ((100vw - 100%) / 2));
+  background: none;
+  color: #111;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  border-bottom: #111 solid 0.5rem;
+  border-top: #111 solid 0.5rem;
+  overflow: hidden;
+}
+
+/* La piste : on duplique le contenu 2× pour une boucle sans “saut” */
+.marquee__track {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: max-content;
+  /* largeur basée sur le contenu */
+  will-change: transform;
+  animation: scroll-left 20s linear infinite;
+}
+
+/* Chaque moitié du contenu (doublée) ne doit pas se réduire */
+.marquee__group {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Un élément de texte/élément dans la piste */
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 2rem;
+  /* espace entre items */
+  font-family: 'Portmanteau', serif, system-ui, -apple-system;
+  font-weight: 600;
+  font-size: 4rem;
+  line-height: 1;
+  letter-spacing: .02em;
+}
+
+/* Variante visuelle (séparateur) */
+.marquee__item::after {
+  opacity: .4;
+  margin-left: 2rem;
+}
+
+.marquee__item:last-child::after {
+  content: "";
+}
+
+span {
+  text-transform: uppercase;
+}
+
+/* Animation : translateX de 50% (car contenu dupliqué) */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* CAROUSELS DEBORDENT A GAUCHE SUR LA SIDEBAR */
+.marquee {
+  position: relative;
+  left: -260px;
+  /* Déborde exactement sur la largeur de la sidebar (260px) */
+  width: calc(100% + 260px);
+  /* Largeur étendue pour compenser */
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+/* NOUVEAU CAROUSEL TECHNOLOGIES (SENS INVERSE) */
+.marquee--tech {
+  margin: 1rem 0;
+  /* Espace réduit pour ne pas trop décaler */
+}
+
+.marquee__track--reverse {
+  animation: scroll-right 15s linear infinite;
+  /* Plus rapide et vers la droite */
+}
+
+.marquee__item--tech {
+  font-size: 2.5rem;
+  /* Plus petit que l'original (4rem) */
+  padding: 0 1.5rem;
+  /* Espacement réduit */
+  color: inherit;
+  /* Même couleur que le carousel principal */
+}
+
+/* Animation vers la droite */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+

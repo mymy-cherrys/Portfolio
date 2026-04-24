@@ -1,0 +1,466 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+  :root{
+  --ink:#2b2b2b;
+  --paper:#f7f6f3;
+  --paper-edge:#e5e2da;
+  --shadow:rgba(0,0,0,.18);
+}
+
+
+.fleche-retour {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+
+
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:"Courier New", monospace;
+  background: url(textures/collagebackground.jpg);
+  min-height:100vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding:12vmin 3vmin 8vmin;
+}
+.frame{
+  position:relative;
+  width:min(820px, 100%);
+  padding:56px 44px 40px;
+  background:var(--paper);
+  border:1px solid var(--paper-edge);
+  box-shadow:8px 10px 18px var(--shadow);
+  transform:rotate(-.6deg);
+  isolation:isolate;
+  margin-top: 30px;
+}
+.frame::before{
+  content:"";
+  position:absolute; inset:auto 0 auto 0;
+  width:140px; height:30px; margin:auto; top:-18px;
+  background:repeating-linear-gradient(135deg, rgba(160,170,180,.55) 0 10px, rgba(200,210,220,.55) 10px 20px);
+  filter:drop-shadow(0 4px 3px rgba(0,0,0,.15));
+  transform:rotate(-4deg);
+  clip-path:polygon(2% 0, 98% 0, 95% 100%, 5% 100%);
+  opacity:.95;
+}
+.frame::after{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:-1;
+  background:
+    conic-gradient(from 90deg at 10px 10px, #d9d6cd 90deg, transparent 0) 0 0/12px 12px repeat,
+    linear-gradient(transparent 14px, rgba(0,0,0,.04) 15px) 0 0/100% 16px no-repeat;
+  mix-blend-mode:multiply; opacity:.35; transform:translate(6px,6px);
+}
+h1{
+  font-family:'Special Elite', system-ui;
+  letter-spacing:1px; text-align:center; margin:0 0 18px; font-size:clamp(24px, 3.2vw, 36px);
+}
+p.intro{
+  font-family:'Shadows Into Light', cursive;
+  font-size:clamp(20px, 3vw, 26px);
+  text-align:center; 
+  margin:0 0 32px;
+  color: #555;
+  line-height: 1.4;
+}
+/* Formulaire de contact amélioré */
+.contact-form { 
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 100%;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label { 
+  font-family: 'Shadows Into Light', cursive; 
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+
+
+.input-group input, 
+.input-group textarea {
+  border: 1px solid #c9c6be; 
+  background: #fbfbfa; 
+  border-radius: 6px;
+  padding: 12px 14px; 
+  font: inherit; 
+  transition: .15s border-color, .15s background;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.6);
+  width: 100%;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus { 
+  outline: none; 
+  border-color: #9a978d; 
+  background: #fff;
+}
+
+.input-group textarea { 
+  min-height: 140px; 
+  resize: vertical;
+}
+
+.row { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px; 
+}
+
+@media (max-width: 600px) { 
+  body {
+    padding: 15vmin 2vmin 10vmin;
+    min-height: 100vh;
+  }
+  
+  .row { 
+    grid-template-columns: 1fr; 
+    gap: 16px;
+  }
+  
+  .frame {
+    padding: 56px 24px 30px;
+    margin-top: 40px;
+    width: 95%;
+    max-width: 500px;
+  }
+  
+  .frame::before {
+    width: 100px;
+    height: 24px;
+    top: -14px;
+  }
+  
+  h1 {
+    font-size: clamp(20px, 5vw, 28px);
+  }
+  
+  p.intro {
+    font-size: clamp(16px, 4vw, 20px);
+    margin-bottom: 24px;
+  }
+  
+  .contact-form {
+    gap: 20px;
+  }
+  
+  .input-group label {
+    font-size: 1rem;
+  }
+  
+  .input-group input,
+  .input-group textarea {
+    padding: 11px 13px;
+    font-size: 15px;
+  }
+  
+  .input-group textarea {
+    min-height: 120px;
+  }
+  
+  .bouton-retour {
+    font-size: 1.1em;
+    padding: 12px 28px 16px 20px;
+  }
+  
+  .postscript {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+}
+
+/* Écrans moyens entre 361px et 495px */
+@media (min-width: 361px) and (max-width: 495px) {
+  body {
+    padding: 16vmin 2vmin 10vmin;
+  }
+  
+  .frame {
+    margin-top: 45px;
+  }
+}
+
+/* Très petits écrans (360px et moins) */
+@media (max-width: 360px) {
+  body {
+    padding: 18vmin 1.5vmin 10vmin;
+    min-height: 100vh;
+  }
+  
+  .frame {
+    padding: 56px 18px 28px;
+    margin-top: 50px;
+    width: 96%;
+  }
+  
+  .frame::before {
+    width: 85px;
+    height: 20px;
+    top: -12px;
+  }
+  
+  h1 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  p.intro {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-form {
+    gap: 18px;
+  }
+  
+  .input-group label {
+    font-size: 0.95rem;
+  }
+  
+  .input-group input,
+  .input-group textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .input-group textarea {
+    min-height: 110px;
+  }
+  
+  .btn-submit {
+    font-size: 1rem;
+    padding: 14px 28px;
+  }
+  
+  .bouton-retour {
+    font-size: 1em;
+    padding: 10px 24px 14px 18px;
+  }
+  
+  .postscript {
+    font-size: 0.9rem;
+  }
+}
+
+/* Section du bouton d'envoi */
+.submit-section { 
+  display: flex; 
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.btn-submit {
+  font-family: 'Courier New', monospace;
+  border: 0; 
+  padding: 16px 32px; 
+  border-radius: 8px; 
+  cursor: pointer;
+  background: #333; 
+  color: #fff; 
+  box-shadow: 2px 3px 0 rgba(0,0,0,.25);
+  transform: rotate(.4deg); 
+  transition: filter .15s, transform .1s;
+  font-size: 1.1rem;
+}
+
+.btn-submit:hover { 
+  filter: brightness(1.05); 
+}
+
+.btn-submit:active { 
+  transform: translateY(1px) rotate(.4deg); 
+  box-shadow: 1px 2px 0 rgba(0,0,0,.25); 
+}
+.postscript{
+  margin-top: 24px; 
+  text-align: center; 
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.1rem; 
+  opacity: .8;
+  color: #666;
+  line-height: 1.3;
+}
+
+.postscript a {
+  color: #444;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  border-bottom: 1px dotted #999;
+}
+
+.postscript a:hover {
+  color: #222;
+  border-bottom: 1px solid #444;
+}
+.arrows{
+  position:absolute; right:24px; top:10px; font-family:'Special Elite';
+  opacity:.8; letter-spacing:4px; font-size:22px;
+}
+
+/* Bouton retour identique à la page projets */
+.bouton-retour {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 14px 36px 18px 24px;
+  background: #f7f3e9;
+  box-shadow: 0 12px 32px -8px #aaa, 0 2px 0 #e0e0e0 inset;
+  color: #444;
+  letter-spacing: 1px;
+
+  border: none;
+  border-radius: 0 32px 0 32px / 0 40px 0 40px;
+
+  font-family: "Indie Flower", "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.2em;
+
+  text-align: left;
+  position: relative;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, box-shadow 0.2s;
+  outline: none;
+
+  /* Effet de bord déchiré en bas */
+  clip-path: polygon(
+    0% 4%,
+    3% 0%,
+    7% 3%,
+    12% 0%,
+    18% 4%,
+    23% 0%,
+    28% 3%,
+    33% 0%,
+    38% 4%,
+    43% 0%,
+    48% 3%,
+    53% 0%,
+    58% 4%,
+    63% 0%,
+    68% 3%,
+    73% 0%,
+    78% 4%,
+    83% 0%,
+    88% 3%,
+    93% 0%,
+    97% 4%,
+    100% 0%,
+    100% 8%,
+    97% 12%,
+    100% 18%,
+    97% 23%,
+    100% 28%,
+    97% 33%,
+    100% 38%,
+    97% 43%,
+    100% 48%,
+    97% 53%,
+    100% 58%,
+    97% 63%,
+    100% 68%,
+    97% 73%,
+    100% 78%,
+    97% 83%,
+    100% 88%,
+    97% 93%,
+    100% 97%,
+    96% 100%,
+    92% 97%,
+    88% 100%,
+    84% 97%,
+    80% 100%,
+    76% 97%,
+    72% 100%,
+    68% 97%,
+    64% 100%,
+    60% 97%,
+    56% 100%,
+    52% 97%,
+    48% 100%,
+    44% 97%,
+    40% 100%,
+    36% 97%,
+    32% 100%,
+    28% 97%,
+    24% 100%,
+    20% 97%,
+    16% 100%,
+    12% 97%,
+    8% 100%,
+    4% 97%,
+    0% 100%,
+    0% 92%,
+    3% 88%,
+    0% 84%,
+    3% 80%,
+    0% 76%,
+    3% 72%,
+    0% 68%,
+    3% 64%,
+    0% 60%,
+    3% 56%,
+    0% 52%,
+    3% 48%,
+    0% 44%,
+    3% 40%,
+    0% 36%,
+    3% 32%,
+    0% 28%,
+    3% 24%,
+    0% 20%,
+    3% 16%,
+    0% 12%,
+    3% 8%
+  );
+}
+
+ html,
+body {
+  height: 100%;
+  cursor: url(curseur-perso.png) 8 8, auto !important;
+  
+}
+
+/* Pour les écrans supérieurs à 1300px : bouton en haut à gauche */
+@media (min-width: 1301px) {
+  body {
+    overflow: hidden;
+  }
+  
+  .bouton-retour {
+    position: absolute;
+    top: 8px;
+    left: 32px;
+    margin-top: 40px;
+  }
+}
