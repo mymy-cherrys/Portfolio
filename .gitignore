@@ -1,0 +1,15 @@
+# Local development
+/node_modules
+.env
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# XAMPP/Local
+/xampp
+/temp
+
+# Vercel (optional, usually not needed)
+.vercel/
