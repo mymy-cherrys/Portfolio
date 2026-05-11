@@ -30,7 +30,7 @@
   <div class="gallery">
 
     <?php
-    $dossier_images = "proj";
+    $dossier_images = __DIR__ . "/../proj";
 
     // Vérifier si le dossier existe
     if (is_dir($dossier_images)) {
@@ -52,8 +52,8 @@
 
           echo "<div class='projet-item'>";
           echo "<div class='polaroid'>";
-          echo "<a href='proj/$FILE' onclick='openLightbox(\"proj/$FILE\", \"$nom_projet\", \"Photoshop\"); return false;'>";
-          echo "<img src='proj/$FILE' alt='$nom_projet' loading='lazy' />";
+          echo "<a href='../proj/$FILE' onclick='openLightbox(\"../proj/$FILE\", \"$nom_projet\", \"Photoshop\"); return false;'>";
+          echo "<img src='../proj/$FILE' alt='$nom_projet' loading='lazy' />";
           echo "</a>";
           echo "<div class='projet-title'>$nom_projet</div>";
           echo "</div>";
